@@ -1,4 +1,5 @@
 ﻿using FSH.WebApi.Application.Catalog.Brands;
+using FSH.WebApi.Domain.Catalog;
 
 namespace FSH.WebApi.Host.Controllers.Catalog;
 
@@ -10,6 +11,14 @@ public class BrandsController : VersionedApiController
     public Task<PaginationResponse<BrandDto>> SearchAsync(SearchBrandsRequest request)
     {
         return Mediator.Send(request);
+    }
+
+    [HttpGet("dprBrandList")]
+    [MustHavePermission(FSHAction.Search, FSHResource.Brands)]
+    [OpenApiOperation("List all brands via Dapper", "")]
+    public Task<IReadOnlyList<BrandDto>> GetallList()
+    {
+        return Mediator.Send(new BrandListDapperRequest());
     }
 
     [HttpGet("{id:guid}")]

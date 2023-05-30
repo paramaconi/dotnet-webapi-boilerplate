@@ -32,3 +32,19 @@ public class ProductConfig : IEntityTypeConfiguration<Product>
                 .HasMaxLength(2048);
     }
 }
+
+public class ProvinciaConfig : IEntityTypeConfiguration<Provincia>
+{
+    public void Configure(EntityTypeBuilder<Provincia> builder)
+    {
+        builder
+            .Property(p => p.Name)
+                .HasMaxLength(50);
+        builder
+            .Property(p => p.LocationID)
+                .HasMaxLength(1);
+        builder
+            .HasKey(p => p.Id)
+                .HasName("Pk_Provincia");
+    }
+}

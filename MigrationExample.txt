@@ -1,0 +1,9 @@
+dotnet ef migrations add <CommitMessage> --project .././Migrators/Migrators.MSSQL/ --context ApplicationDbContext -o Migrations/Application
+dotnet ef migrations remove --project .././Migrators/Migrators.MSSQL/ --context ApplicationDbContext
+
+
+add-migration <CommitMessage> --project .././Migrators/Migrators.MSSQL/ --context ApplicationDbContext -o Migrations/Application
+
+Add-Migration -name nombre  -OutputDir Migrations/Application -Context ApplicationDbContext -Project .././Migrators/Migrators.MSSQL/
+Add-Migration -name nombre  -OutputDir Migrations/Application -Context ApplicationDbContext -Project /Users/param/source/repos/dotnet-webapi-boilerplate/src/Host/Migrators/Migrators.MSSQL/
+Add-Migration -name nombre  -OutputDir Migrations/Application -Context ApplicationDbContext -Project C:\Users\param\source\repos\dotnet-webapi-boilerplate\src\Migrators\Migrators.MSSQL\
