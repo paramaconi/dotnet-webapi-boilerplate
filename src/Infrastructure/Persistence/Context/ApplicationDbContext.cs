@@ -19,6 +19,7 @@ public class ApplicationDbContext : BaseDbContext
     public DbSet<Brand> Brands => Set<Brand>();
     public DbSet<Provincia> Provincias => Set<Provincia>();
     public DbSet<Canton> Cantones => Set<Canton>();
+    public DbSet<Distrito> Distritos => Set<Distrito>();
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {

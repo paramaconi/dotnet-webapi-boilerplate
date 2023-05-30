@@ -64,3 +64,19 @@ public class CantonConfig : IEntityTypeConfiguration<Canton>
                 .HasName("Pk_Canton");
     }
 }
+
+public class DistritoConfig : IEntityTypeConfiguration<Distrito>
+{
+    public void Configure(EntityTypeBuilder<Distrito> builder)
+    {
+        builder.
+            Property(p => p.Name)
+                .HasMaxLength(100);
+        builder.
+            Property(p => p.LocationID).
+                HasMaxLength(2);
+        builder
+            .HasKey(p => p.Id)
+                .HasName("Pk_Distrito");
+    }
+}
