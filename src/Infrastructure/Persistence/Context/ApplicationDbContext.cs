@@ -20,6 +20,7 @@ public class ApplicationDbContext : BaseDbContext
     public DbSet<Provincia> Provincias => Set<Provincia>();
     public DbSet<Canton> Cantones => Set<Canton>();
     public DbSet<Distrito> Distritos => Set<Distrito>();
+    public DbSet<Barrio> Barrios => Set<Barrio>();
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {

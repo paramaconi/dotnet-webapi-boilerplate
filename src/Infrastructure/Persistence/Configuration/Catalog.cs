@@ -80,3 +80,19 @@ public class DistritoConfig : IEntityTypeConfiguration<Distrito>
                 .HasName("Pk_Distrito");
     }
 }
+
+public class BarrioConfig : IEntityTypeConfiguration<Barrio>
+{
+    public void Configure(EntityTypeBuilder<Barrio> builder)
+    {
+        builder.
+           Property(p => p.Name)
+               .HasMaxLength(100);
+        builder.
+            Property(p => p.LocationID).
+                HasMaxLength(2);
+        builder
+            .HasKey(p => p.Id)
+                .HasName("Pk_Barrio");
+    }
+}
