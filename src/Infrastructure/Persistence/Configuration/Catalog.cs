@@ -48,3 +48,19 @@ public class ProvinciaConfig : IEntityTypeConfiguration<Provincia>
                 .HasName("Pk_Provincia");
     }
 }
+
+public class CantonConfig : IEntityTypeConfiguration<Canton>
+{
+    public void Configure(EntityTypeBuilder<Canton> builder)
+    {
+        builder.
+            Property(p => p.Name)
+                .HasMaxLength(100);
+        builder.
+            Property(p => p.LocationID).
+                HasMaxLength(2);
+        builder
+            .HasKey(p => p.Id)
+                .HasName("Pk_Canton");
+    }
+}
