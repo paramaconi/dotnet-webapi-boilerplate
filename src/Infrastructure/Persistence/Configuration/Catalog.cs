@@ -96,3 +96,19 @@ public class BarrioConfig : IEntityTypeConfiguration<Barrio>
                 .HasName("Pk_Barrio");
     }
 }
+
+public class CabysConfig : IEntityTypeConfiguration<Cabys>
+{
+    public void Configure(EntityTypeBuilder<Cabys> builder)
+    {
+        builder
+            .Property(p => p.CabysID)
+                .HasMaxLength(13);
+        builder
+            .Property(p => p.Descripcion)
+                .HasMaxLength(1024);
+        builder
+            .HasKey(k => k.Id)
+                .HasName("Pk_Cabys");
+    }
+}

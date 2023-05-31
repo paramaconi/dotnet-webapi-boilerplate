@@ -21,6 +21,7 @@ public class ApplicationDbContext : BaseDbContext
     public DbSet<Canton> Cantones => Set<Canton>();
     public DbSet<Distrito> Distritos => Set<Distrito>();
     public DbSet<Barrio> Barrios => Set<Barrio>();
+    public DbSet<Cabys> CabysCatalogo => Set<Cabys>();
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
