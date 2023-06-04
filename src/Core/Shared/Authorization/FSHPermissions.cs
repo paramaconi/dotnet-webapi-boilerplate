@@ -26,6 +26,10 @@ public static class FSHResource
     public const string RoleClaims = nameof(RoleClaims);
     public const string Products = nameof(Products);
     public const string Brands = nameof(Brands);
+    public const string Provincias = nameof(Provincias);
+    public const string Cantones = nameof(Cantones);
+    public const string Distritos = nameof(Distritos);
+    public const string Barrios = nameof(Barrios);
 }
 
 public static class FSHPermissions
@@ -61,6 +65,10 @@ public static class FSHPermissions
         new("Delete Brands", FSHAction.Delete, FSHResource.Brands),
         new("Generate Brands", FSHAction.Generate, FSHResource.Brands),
         new("Clean Brands", FSHAction.Clean, FSHResource.Brands),
+        new("Search Provincias", FSHAction.Search, FSHResource.Provincias, IsBasic: true),
+        new("Search Cantones", FSHAction.Search, FSHResource.Cantones, IsBasic: true),
+        new("Search Distritos", FSHAction.Search, FSHResource.Distritos, IsBasic: true),
+        new("Search Barrios", FSHAction.Search, FSHResource.Barrios, IsBasic: true),
         new("View Tenants", FSHAction.View, FSHResource.Tenants, IsRoot: true),
         new("Create Tenants", FSHAction.Create, FSHResource.Tenants, IsRoot: true),
         new("Update Tenants", FSHAction.Update, FSHResource.Tenants, IsRoot: true),
