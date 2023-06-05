@@ -107,6 +107,12 @@ public class CabysConfig : IEntityTypeConfiguration<Cabys>
         builder
             .Property(p => p.Descripcion)
                 .HasMaxLength(1024);
+        builder.
+            HasIndex(p => p.CabysID)
+                .HasDatabaseName("IDX_Cabys_CabysId");
+        builder.
+            HasIndex(p => p.Descripcion)
+                .HasDatabaseName("IDX_Cabys_Descripcion");
         builder
             .HasKey(k => k.Id)
                 .HasName("Pk_Cabys");
