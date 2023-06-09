@@ -30,6 +30,7 @@ public static class FSHResource
     public const string Cantones = nameof(Cantones);
     public const string Distritos = nameof(Distritos);
     public const string Barrios = nameof(Barrios);
+    public const string Cabys = nameof(Cabys);
 }
 
 public static class FSHPermissions
@@ -69,6 +70,7 @@ public static class FSHPermissions
         new("Search Cantones", FSHAction.Search, FSHResource.Cantones, IsBasic: true),
         new("Search Distritos", FSHAction.Search, FSHResource.Distritos, IsBasic: true),
         new("Search Barrios", FSHAction.Search, FSHResource.Barrios, IsBasic: true),
+        new("Search Cabys", FSHAction.Search, FSHResource.Cabys, IsBasic: true),
         new("View Tenants", FSHAction.View, FSHResource.Tenants, IsRoot: true),
         new("Create Tenants", FSHAction.Create, FSHResource.Tenants, IsRoot: true),
         new("Update Tenants", FSHAction.Update, FSHResource.Tenants, IsRoot: true),
