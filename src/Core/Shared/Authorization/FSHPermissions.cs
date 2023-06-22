@@ -31,6 +31,7 @@ public static class FSHResource
     public const string Distritos = nameof(Distritos);
     public const string Barrios = nameof(Barrios);
     public const string Cabys = nameof(Cabys);
+    public const string Sociedades = nameof(Sociedades);
 }
 
 public static class FSHPermissions
@@ -66,6 +67,11 @@ public static class FSHPermissions
         new("Delete Brands", FSHAction.Delete, FSHResource.Brands),
         new("Generate Brands", FSHAction.Generate, FSHResource.Brands),
         new("Clean Brands", FSHAction.Clean, FSHResource.Brands),
+        new("View Brands", FSHAction.View, FSHResource.Sociedades, IsBasic: true),
+        new("Search Brands", FSHAction.Search, FSHResource.Sociedades, IsBasic: true),
+        new("Create Brands", FSHAction.Create, FSHResource.Sociedades),
+        new("Update Brands", FSHAction.Update, FSHResource.Sociedades),
+        new("Delete Brands", FSHAction.Delete, FSHResource.Sociedades),
         new("Search Provincias", FSHAction.Search, FSHResource.Provincias, IsBasic: true),
         new("Search Cantones", FSHAction.Search, FSHResource.Cantones, IsBasic: true),
         new("Search Distritos", FSHAction.Search, FSHResource.Distritos, IsBasic: true),

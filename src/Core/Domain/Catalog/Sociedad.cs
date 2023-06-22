@@ -1,14 +1,16 @@
-﻿namespace FSH.WebApi.Domain.Catalog;
+﻿using System.Runtime.InteropServices;
+
+namespace FSH.WebApi.Domain.Catalog;
 public class Sociedad : AuditableEntity, IAggregateRoot
 {
     public string RazonSocial { get; private set; } = default!;
     public string? NombreComercial { get; private set; }
     public string TipoIdentificacion { get; private set; } = default!;
     public string Identificacion { get; private set; } = default!;
-    public string Provincia { get; private set; } = default!;
-    public string Canton { get; private set; } = default!;
-    public string Distrito { get; private set; } = default!;
-    public string? Barrio { get; private set; }
+    public Guid ProvinciaId { get; private set; }
+    public Guid CantonId { get; private set; }
+    public Guid DistritoId { get; private set; }
+    public Guid? BarrioId { get; private set; }
     public string OtrasSenas { get; private set; } = default!;
     public string? CodigoPaisPrincipal { get; private set; }
     public string? NumTelefonoPrincipal { get; private set; }
@@ -18,19 +20,23 @@ public class Sociedad : AuditableEntity, IAggregateRoot
     public string? Fax { get; private set; }
     public string? CorreoElectronico { get; private set; }
     public string? LogoPath { get; private set; }
+    public virtual Provincia Provincia { get; set; } = default!;
+    public virtual Canton Canton { get; set; } = default!;
+    public virtual Distrito Distrito { get; set; } = default!;
+    public virtual Barrio? Barrio { get; set; }
 
     public virtual List<ActividadEconomicaPorSociedad>? ActividadesEconomicas { get; set; }
 
-    public Sociedad(string razonSocial, string? nombreComercial, string tipoIdentificacion, string identificacion, string provincia, string canton, string distrito, string? barrio, string otrasSenas, string? codigoPaisPrincipal, string? numTelefonoPrincipal, string? codigoPaisSecundario, string? numTelefonoSecundario, string? codigoPaisFax, string? fax, string? correoElectronico, string? logoPath)
+    public Sociedad(string razonSocial, string? nombreComercial, string tipoIdentificacion, string identificacion, Guid provinciaId, Guid cantonId, Guid distritoId, Guid? barrioId, string otrasSenas, string? codigoPaisPrincipal, string? numTelefonoPrincipal, string? codigoPaisSecundario, string? numTelefonoSecundario, string? codigoPaisFax, string? fax, string? correoElectronico, string? logoPath)
     {
         RazonSocial = razonSocial;
         NombreComercial = nombreComercial;
         TipoIdentificacion = tipoIdentificacion;
         Identificacion = identificacion;
-        Provincia = provincia;
-        Canton = canton;
-        Distrito = distrito;
-        Barrio = barrio;
+        ProvinciaId = provinciaId;
+        CantonId = cantonId;
+        DistritoId = distritoId;
+        BarrioId = barrioId!.Value;
         OtrasSenas = otrasSenas;
         CodigoPaisPrincipal = codigoPaisPrincipal;
         NumTelefonoPrincipal = numTelefonoPrincipal;
@@ -42,16 +48,16 @@ public class Sociedad : AuditableEntity, IAggregateRoot
         LogoPath = logoPath;
     }
 
-    public Sociedad Update(string? razonSocial, string? nombreComercial, string? tipoIdentificacion, string? identificacion, string? provincia, string? canton, string? distrito, string? barrio, string? otrasSenas, string? codigoPaisPrincipal, string? numTelefonoPrincipal, string? codigoPaisSecundario, string? numTelefonoSecundario, string? codigoPaisFax, string? fax, string? correoElectronico, string? logoPath)
+    public Sociedad Update(string? razonSocial, string? nombreComercial, string? tipoIdentificacion, string? identificacion, Guid? provinciaId, Guid? cantonId, Guid? distritoId, Guid? barrioId, string? otrasSenas, string? codigoPaisPrincipal, string? numTelefonoPrincipal, string? codigoPaisSecundario, string? numTelefonoSecundario, string? codigoPaisFax, string? fax, string? correoElectronico, string? logoPath)
     {
         if (razonSocial is not null && RazonSocial.Equals(razonSocial) is not true) RazonSocial = razonSocial;
         if (nombreComercial is not null && NombreComercial?.Equals(nombreComercial) is not true) NombreComercial = nombreComercial;
         if (tipoIdentificacion is not null && TipoIdentificacion.Equals(tipoIdentificacion) is not true) TipoIdentificacion = tipoIdentificacion;
         if (identificacion is not null && Identificacion.Equals(identificacion) is not true) Identificacion = identificacion;
-        if (provincia is not null && Provincia.Equals(provincia) is not true) Provincia = provincia;
-        if (canton is not null && Canton.Equals(canton) is not true) Canton = canton;
-        if (distrito is not null && Distrito.Equals(distrito) is not true) Distrito = distrito;
-        if (barrio is not null && Barrio?.Equals(barrio) is not true) Barrio = barrio;
+        if (provinciaId.HasValue && provinciaId.Value != Guid.Empty && ProvinciaId.Equals(provinciaId.Value) is not true) ProvinciaId = provinciaId.Value;
+        if (cantonId.HasValue && cantonId.Value != Guid.Empty && CantonId.Equals(cantonId.Value) is not true) CantonId = cantonId.Value;
+        if (distritoId.HasValue && distritoId.Value != Guid.Empty && DistritoId.Equals(distritoId.Value) is not true) DistritoId = distritoId.Value;
+        if (barrioId.HasValue && barrioId.Value != Guid.Empty && BarrioId?.Equals(barrioId.Value) is not true) BarrioId = barrioId.Value;
         if (otrasSenas is not null && OtrasSenas.Equals(otrasSenas) is not true) OtrasSenas = otrasSenas;
         if (codigoPaisPrincipal is not null && CodigoPaisPrincipal?.Equals(codigoPaisPrincipal) is not true) CodigoPaisPrincipal = codigoPaisPrincipal;
         if (numTelefonoPrincipal is not null && NumTelefonoPrincipal?.Equals(numTelefonoPrincipal) is not true) NumTelefonoPrincipal = numTelefonoPrincipal;

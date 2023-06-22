@@ -126,6 +126,9 @@ public class SociedadConfig : IEntityTypeConfiguration<Sociedad>
         builder.IsMultiTenant();
 
         builder
+            .HasIndex(b => new { b.TipoIdentificacion, b.Identificacion})
+                .IsUnique();
+        builder
             .Property(b => b.RazonSocial)
                 .HasMaxLength(100);
         builder
@@ -133,22 +136,10 @@ public class SociedadConfig : IEntityTypeConfiguration<Sociedad>
                 .HasMaxLength(80);
         builder
             .Property(b => b.TipoIdentificacion)
-                .HasMaxLength(1);
+                .HasMaxLength(2);
         builder
             .Property(b => b.Identificacion)
                 .HasMaxLength(12);
-        builder
-            .Property(b => b.Provincia)
-                .HasMaxLength(1);
-        builder
-            .Property(b => b.Canton)
-                .HasMaxLength(2);
-        builder
-            .Property(b => b.Distrito)
-                .HasMaxLength(2);
-        builder
-            .Property(b => b.Barrio)
-                .HasMaxLength(2);
         builder
             .Property(b => b.OtrasSenas)
                 .HasMaxLength(250);
@@ -215,5 +206,41 @@ public class SociedadDatosHaciendaConfig : IEntityTypeConfiguration<SociedadDato
         builder
             .Property(b => b.ServidorSmtp)
                 .HasMaxLength(50);
+    }
+}
+
+public class SucursalConfig : IEntityTypeConfiguration<Sucursal>
+{
+    public void Configure(EntityTypeBuilder<Sucursal> builder)
+    {
+        builder
+            .IsMultiTenant();
+        builder
+            .Property(b => b.Codigo)
+                .HasMaxLength(3);
+        builder
+            .Property(b => b.Nombre)
+                .HasMaxLength(100);
+        builder
+            .HasIndex(b => new { b.SociedadId, b.Codigo })
+                .IsUnique();
+    }
+}
+
+public class TerminalConfig : IEntityTypeConfiguration<Terminal>
+{
+    public void Configure(EntityTypeBuilder<Terminal> builder)
+    {
+        builder
+            .IsMultiTenant();
+        builder
+           .Property(b => b.Codigo)
+               .HasMaxLength(5);
+        builder
+            .Property(b => b.Nombre)
+                .HasMaxLength(100);
+        builder
+            .HasIndex(b => new { b.SucursalId, b.Codigo})
+                .IsUnique();
     }
 }

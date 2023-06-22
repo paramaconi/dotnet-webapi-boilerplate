@@ -25,6 +25,8 @@ public class ApplicationDbContext : BaseDbContext
     public DbSet<Sociedad> Sociedades => Set<Sociedad>();
     public DbSet<ActividadEconomicaPorSociedad> SociedadesActividadEconomica => Set<ActividadEconomicaPorSociedad>();
     public DbSet<SociedadDatosHacienda> SociedadesDatosHacienda => Set<SociedadDatosHacienda>();
+    public DbSet<Sucursal> Sucursales => Set<Sucursal>();
+    public DbSet<Terminal> Terminales => Set<Terminal>();
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {

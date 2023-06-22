@@ -1,5 +1,4 @@
 ﻿using FSH.WebApi.Application.Catalog.Brands;
-using FSH.WebApi.Domain.Catalog;
 
 namespace FSH.WebApi.Host.Controllers.Catalog;
 

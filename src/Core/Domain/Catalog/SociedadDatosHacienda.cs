@@ -38,4 +38,10 @@ public class SociedadDatosHacienda : AuditableEntity, IAggregateRoot
         if (sociedadId.HasValue && sociedadId.Value != Guid.Empty && SociedadId.Equals(sociedadId.Value) is not true) SociedadId = sociedadId.Value;
         return this;
     }
+
+    public SociedadDatosHacienda ClearLlaveCriptografica()
+    {
+        LlaveCriptografica = string.Empty;
+        return this;
+    }
 }
